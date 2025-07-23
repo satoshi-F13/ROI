@@ -635,7 +635,7 @@ server <- function(input, output, session) {
                 )
                 
                 # Stage 3
-                incProgress(1, detail = "Downloading proposal...")
+                incProgress(0.95, detail = "Downloading report...")
                 
                 # Copy the generated PDF
                 generatedPDF <- sub("\\.qmd$", ".pdf", tempReport)
