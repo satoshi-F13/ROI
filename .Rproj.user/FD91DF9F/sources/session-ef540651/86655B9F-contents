@@ -1,4 +1,4 @@
-rsconnect::deployApp(appFiles='Pump_ROI_Seller/app.r')# Load required libraries----
+# Load required libraries----
 library(shiny)
 library(shinydashboard)
 library(shinyjs)
