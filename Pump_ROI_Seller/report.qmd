@@ -5,7 +5,6 @@ format:
      template-partials:
        - typst-show.typ
        - typst-template.typ
-prefer-html: true
 execute:
   echo: false
   warning: false
