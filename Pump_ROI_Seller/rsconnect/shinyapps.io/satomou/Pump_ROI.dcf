@@ -1,0 +1,12 @@
+name: Pump_ROI
+title: Pump_ROI
+username: satomou
+account: satomou
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14826898
+bundleId: 10344719
+url: https://satomou.shinyapps.io/Pump_ROI/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

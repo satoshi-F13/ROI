@@ -1,0 +1,58 @@
+meta:
+  name: Pump Unit Agent, Estonia
+  links:
+    home: https://toostuspumbad.ee/
+logo:
+  images:
+    icon-color: logos/icon/sample_logo.png
+    wide-color: logos/wide/sample_logo.png
+    tall-color: logos/wide/sample_logo.png
+  small: icon-color
+  medium: wide-color
+  large: tall-color
+color:
+  palette:
+    green: "#002300"
+    red: "#230000"
+    orange: "#FF5D20"
+    grey: "#989898"
+    blue: "#3EB0E6"
+    black: "#231F20"
+    white: "#FFFFFF"
+  foreground: black
+  background: white
+  primary: blue
+  secondary: orange
+  success: green
+  info: grey
+  warning: orange
+  danger: red
+  light: white
+  dark: black
+typography:
+  fonts:
+    - family: Noto Sans 
+      source: google
+  base:
+    family: Noto Sans
+    line-height: 1.6
+  headings:
+    family: Noto Sans 
+    weight: 600
+  link:
+    color: primary
+    decoration: underline
+  monospace:
+    family: Noto Sans
+    size: 1em
+defaults:
+  bootstrap:
+    defaults:
+      link-decoration: underline
+      navbar-fg: "#fff"
+  quarto:
+    format:
+      html:
+      revealjs:
+      typst:
+  shiny:

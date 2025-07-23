@@ -1,0 +1,208 @@
+---
+title: "Pump Unit ROI aruanne"
+format: 
+   typst:
+     template-partials:
+       - typst-show.typ
+       - typst-template.typ
+execute:
+  echo: false
+  warning: false
+  message: false
+params:
+  calc: NULL
+  investment_recovery: NULL
+  metrics: NULL
+  breakdown: NULL
+  performance_data: NULL
+  years: '`r params$years`'
+  investment: '`r params$investment`'
+  total_savings: '`r params$total_savings`'
+  roi_percent: '`r params$roi_percent`'
+  payback_years: '`r params$payback_years`'
+  project: '`r params$project`'
+  product: '`r params$product`'
+  efficiency_diff: '`r params$efficiency_diff`'
+  energy_savings: '`r params$energy_savings`'
+  mtbf_improvement: '`r params$mtbf_improvement`'
+  downtime_savings: '`r params$downtime_savings`'
+  maintenance_savings: '`r params$maintenance_savings`'
+  warranty: '`r params$warranty`'
+---
+
+
+```{r}
+# library
+library(dplyr)
+library(readr)
+library(tidyr)
+library(flextable)
+library(tidyverse)
+library(ggrepel)
+library(ggplot2)
+library(GGally)
+library(ggmap)
+library(scales)
+library(extrafont)
+library(viridis)
+library(patchwork)
+library(hrbrthemes)
+library(fmsb)
+library(colormap)
+library(plotly)
+library(DT)
+```
+
+
+```{r}
+## Database
+
+calc <- readRDS(file = params$calc)
+investment_recovery <- readRDS(file = params$investment_recovery)
+metrics <- readRDS(file = params$metrics)
+breakdown <- readRDS(file = params$breakdown) 
+performance_data <- readRDS(file = params$performance_data)
+```
+
+
+
+# Kokkuvõte {.unnumbered}
+
+Uue **`r params$product`** pumpade süsteemi rakendamine **`r params$project`** jaoks näitab erakordset finantstulemuslikkust võrreldes praeguse pumba infrastruktuuriga. **`r params$product`** pakub veenvaid majanduslikke eeliseid. Kogusääst **`r params$years`** aastate jooksul on **€`r params$total_savings`**. See tähendab tugevat **`r params$roi_percent`%** investeeringu tasuvust. Esialgne investeering tasutakse tagasi **`r params$payback_years`** aastaga. The annual CO2 reduction will be **`r format(calc$annual_co2_savings, big.mark = ",")`** kg.
+
+
+
+# Peamised järeldused{.unnumbered}
+::: {.grid layout-ncol=3 layout-valign="center" layout-halign="center" layout-gap="10pt" style="text-align: center;"}
+::: {.key-value-box style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;"}
+<div style="font-size: 2.5em; color: #3EB0E6; font-weight: bold;">`r params$efficiency_diff`</div>
+<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> pumba tõhususe erinevused.</span>
+:::
+::: {.key-value-box style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;"}
+<div style="font-size: 2.5em; color: #3EB0E6; font-weight: bold;">`r params$energy_savings`</div>
+<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> aastaste energiakulude säästmiseks.</span>
+:::
+::: {.key-value-box style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;"}
+<div style="font-size: 2.5em; color: #3EB0E6; font-weight: bold;">`r params$mtbf_improvement`</div>
+<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> erinevuste puhul MTBF.</span>
+:::
+
+::: {.key-value-box style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;"}
+<div style="font-size: 2.5em; color: #3EB0E6; font-weight: bold;">`r params$downtime_savings`</div>
+<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> aastased seisakute erinevused.</span>
+:::
+
+::: {.key-value-box style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;"}
+<div style="font-size: 2.5em; color: #3EB0E6; font-weight: bold;">`r params$maintenance_savings`</div>
+<span style="font-size: 1em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> hoolduskulude kokkuhoidmiseks.</span>
+:::
+::: {.key-value-box style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;"}
+<div style="font-size: 2.5em; color: #3EB0E6; font-weight: bold;">`r params$warranty`</div>
+<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> Garantiiperioodi erinevuste puhul.</span>
+:::
+
+:::
+
+::: {.grid layout-ncol=2 layout-valign="center" layout-halign="center" layout-gap="10pt" style="text-align: center;"}
+
+## Investeeringute taastamine
+```{r}
+    df <- data.frame(
+      Year = calc$years,
+      Investment = rep(calc$investment, length(calc$years)),
+      Cumulative_Savings = calc$cumulative_savings,
+      Net_Benefit = calc$net_benefit
+    )
+    
+    p <- plot_ly(df, x = ~Year) %>%
+      add_lines(y = ~Investment, name = "Initial Investment", line = list(color = "red", dash = "dash")) %>%
+      add_lines(y = ~Cumulative_Savings, name = "Cumulative Savings", line = list(color = "green")) %>%
+      add_lines(y = ~Net_Benefit, name = "Net Benefit", line = list(color = "blue", width = 3)) %>%
+      add_lines(x = range(df$Year), y = c(0, 0), name = "Break-even", 
+                line = list(color = "black", dash = "dot"), showlegend = FALSE) %>%
+      layout(
+        xaxis = list(title = "Year"),
+        yaxis = list(title = "Amount (€)"),
+        hovermode = "x unified",
+        legend = list(
+          x = 0.5, y = 1, xanchor = "center", yanchor = "bottom", orientation = "h"
+        )
+      )
+    
+    p
+```
+
+
+
+
+
+## Mõõdikute võrdlused
+```{r}
+    # DT::datatable(metrics, options = list(dom = 't', pageLength = 10), rownames = FALSE)
+set_flextable_defaults(
+  font.family = "Noto Sans",
+  font.size = 9,
+  padding = 1,
+  border.color = "#CCCCCC",
+  line_spacing = 1.3
+)
+flextable::flextable(data = metrics) %>%
+  set_header_labels(
+    Metric = "Metric",
+    Current = "Current",
+    Proposed = "Proposed",
+    Annual_Savings = "Annual Savings"  # Remove underscore here
+  )
+
+```
+
+
+
+:::
+
+
+
+::: {.grid layout-ncol=2 layout-valign="center" layout-halign="center" layout-gap="10pt" style="text-align: center;"}
+
+
+## Säästude jaotus
+```{r}
+    p <- plot_ly(breakdown, x = ~Category, y = ~Annual_Savings, type = 'bar', 
+                 marker = list(color = c('#1f77b4', '#ff7f0e', '#2ca02c'), opacity = 0.8)) %>%
+                                layout(
+                                  xaxis = list(title = "Savings Category"),
+                                  yaxis = list(title = "Annual Savings (€)"),
+                                  showlegend = FALSE
+                                )
+                                
+      p
+
+```
+
+
+
+## Tulemuslikkuse võrdlus
+```{r}
+          # Reshape data for grouped bar chart
+          df_long <- data.frame(
+            Metric = rep(performance_data$Metric, 2),
+            Value = c(performance_data$Current, performance_data$Proposed),
+            Type = rep(c("Current", "Proposed"), each = 3)
+          )
+          
+          p <- plot_ly(df_long, x = ~Metric, y = ~Value, color = ~Type, type = 'bar',
+                       colors = c("Current" = "#d62728", "Proposed" = "#2ca02c")) %>%
+            layout(
+              xaxis = list(title = "Performance Metrics"),
+              yaxis = list(title = "Value"),
+              barmode = 'group',
+              legend = list(x = 0.5, y = 1, xanchor = "center", yanchor = "bottom", orientation = "h")
+            )
+          
+          p
+```
+
+
+
+:::
+

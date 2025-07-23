@@ -1,0 +1,122 @@
+# Pump ROI Analysis Tool
+
+## Overview
+
+The Pump ROI Analysis Tool is a web application designed to streamline the investment decision process for industrial pump replacements. This tool enables plant managers, production controllers, and procurement teams to quickly generate comprehensive financial analysis reports for pump upgrade projects.
+
+## Target Audience
+
+- **Plant Managers** - Make informed equipment replacement decisions
+- **Production Controllers** - Analyze operational cost impacts
+- **Finance Teams** - Review investment returns and payback periods
+- **Procurement Teams** - Support vendor selection and budget planning
+
+## Key Features
+
+### 📊 **Interactive Data Input Form**
+- Easy-to-use web interface for entering pump specifications
+- Input fields for current pump performance metrics
+- New pump performance and pricing information
+- Built-in validation to ensure data accuracy
+
+### 💾 **Data Management**
+- Save analysis data as CSV files for record keeping
+- Export functionality for data sharing and archival
+- Reusable data templates for similar projects
+
+### 📈 **Web Dashboard**
+- Real-time ROI calculations and visualizations
+- Comparative performance metrics display
+- Interactive charts showing cost savings over time
+- Key performance indicators (KPIs) at a glance
+
+### 📄 **Automatic PDF Report Generation**
+- Professional, stakeholder-ready PDF reports
+- Comprehensive financial analysis summary
+- Visual charts and comparative data tables
+- Executive summary with key recommendations
+
+## How to Use
+
+### Step 1: Data Input
+1. Open the web application
+2. Navigate to the **Data Input** section
+3. Fill in the required information:
+   - **Current Pump Details**: Performance specs, maintenance costs, energy consumption
+   - **New Pump Details**: Performance improvements, purchase price, warranty terms
+   - **Operational Parameters**: Operating hours, electricity rates, labor costs
+
+### Step 2: Analysis Dashboard
+1. Click the **Analysis** tab after completing data input
+2. Review the interactive dashboard featuring:
+   - ROI calculations and payback period
+   - Annual cost comparisons
+   - Cumulative savings projections
+   - Performance improvement metrics
+
+### Step 3: Export Options
+- **PDF Report**: Click **"Export Report"** to generate a comprehensive PDF document for stakeholders
+- **CSV Data**: Click **"SAVE"** to download your analysis data as a CSV file for future reference
+
+## Why This Tool Was Created
+
+### The Business Challenge
+When considering pump replacement investments, plant managers face the critical task of justifying expenditures to upper management and finance teams. The decision requires:
+- Comprehensive financial analysis
+- Clear demonstration of operational benefits
+- Professional documentation for stakeholder approval
+- Quantifiable return on investment metrics
+
+### The Solution
+This application addresses the need for **rapid, professional financial analysis** of pump replacement projects. By focusing on the financial perspective, it provides the essential documentation required for mid-size capital investments.
+
+## Problem Solved
+
+### **Pain Point**: Time-Consuming Report Generation
+Traditional methods of creating investment analysis reports can take hours or even days, involving:
+- Manual calculations across multiple spreadsheets
+- Creating charts and visualizations from scratch
+- Formatting professional reports for different audiences
+- Coordinating data between various stakeholders
+
+### **Solution**: Streamlined Analysis Process
+- **Input to Report**: Complete analysis in just minutes
+- **Automated Calculations**: Eliminates manual computation errors
+- **Professional Output**: Stakeholder-ready reports instantly
+- **Consistent Format**: Standardized reporting across all projects
+
+## Benefits
+
+### For Plant Managers
+- **Quick Decision Support**: Rapid ROI analysis for equipment decisions
+- **Professional Documentation**: Ready-to-present reports for management approval
+- **Data-Driven Decisions**: Objective financial metrics to support recommendations
+
+### For Finance Teams
+- **Standardized Analysis**: Consistent financial evaluation methodology
+- **Clear ROI Metrics**: Payback period, total savings, and return percentages
+- **Export Capability**: Data integration with existing financial systems
+
+### For Procurement Teams
+- **Vendor Comparison**: Objective analysis of different pump options
+- **Budget Planning**: Clear cost projections and savings forecasts
+- **Documentation**: Complete records for audit and compliance purposes
+
+## Technical Requirements
+
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- Internet connection for web application access
+- PDF viewer for report review
+
+## Getting Started
+
+1. Access the web application through your organization's provided URL
+2. Begin with a small test case to familiarize yourself with the interface
+3. Gather your pump specifications and cost data before starting
+4. Use the dashboard to validate your analysis before generating reports
+5. Share PDF reports with relevant stakeholders for approval
+
+
+---
+
+*Transform your pump replacement decision process from hours of manual work to minutes of automated analysis.*
