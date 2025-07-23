@@ -73,33 +73,36 @@
       "Source": "CRAN",
       "Repository": "https://cran.rstudio.com",
       "description": {
-        "Package": "GGally",
-        "Version": "2.2.1",
-        "License": "GPL (>= 2.0)",
-        "Title": "Extension to 'ggplot2'",
         "Type": "Package",
-        "LazyLoad": "yes",
-        "LazyData": "true",
+        "Package": "GGally",
+        "Title": "Extension to 'ggplot2'",
+        "Version": "2.3.0",
+        "Authors@R": "c(\n    person(\"Barret\", \"Schloerke\", , \"schloerke@gmail.com\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0001-9986-114X\")),\n    person(\"Di\", \"Cook\", , \"dicook@monash.edu\", role = c(\"aut\", \"ths\"),\n           comment = c(ORCID = \"0000-0002-3813-7155\")),\n    person(\"Joseph\", \"Larmarange\", , \"joseph@larmarange.net\", role = \"aut\",\n           comment = c(ORCID = \"0000-0001-7097-700X\")),\n    person(\"Francois\", \"Briatte\", , \"f.briatte@gmail.com\", role = \"aut\"),\n    person(\"Moritz\", \"Marbach\", , \"mmarbach@mail.uni-mannheim.de\", role = \"aut\"),\n    person(\"Edwin\", \"Thoen\", , \"edwinthoen@gmail.com\", role = \"aut\"),\n    person(\"Amos\", \"Elberg\", , \"amos.elberg@gmail.com\", role = \"aut\"),\n    person(\"Ott\", \"Toomet\", , \"otoomet@gmail.com\", role = \"ctb\"),\n    person(\"Jason\", \"Crowley\", , \"crowley.jason.s@gmail.com\", role = \"aut\"),\n    person(\"Heike\", \"Hofmann\", , \"hhofmann4@unl.edu\", role = \"ths\",\n           comment = c(ORCID = \"0000-0001-6216-5183\")),\n    person(\"Hadley\", \"Wickham\", , \"h.wickham@gmail.com\", role = \"ths\",\n           comment = c(ORCID = \"0000-0003-4757-117X\"))\n  )",
+        "Description": "The R package 'ggplot2' is a plotting system based on the\n    grammar of graphics.  'GGally' extends 'ggplot2' by adding several\n    functions to reduce the complexity of combining geometric objects with\n    transformed data.  Some of these functions include a pairwise plot\n    matrix, a two group pairwise plot matrix, a parallel coordinates plot,\n    a survival plot, and several functions to plot networks.",
+        "License": "GPL (>= 2.0)",
         "URL": "https://ggobi.github.io/ggally/, https://github.com/ggobi/ggally",
         "BugReports": "https://github.com/ggobi/ggally/issues",
-        "Authors@R": "c(\n    person(\"Barret\", \"Schloerke\", role = c(\"aut\", \"cre\"), email = \"schloerke@gmail.com\"),\n    person(\"Di\", \"Cook\", role = c(\"aut\", \"ths\"), email = \"dicook@monash.edu\"),\n    person(\"Joseph\", \"Larmarange\", role = \"aut\", email = \"joseph@larmarange.net\"),\n    person(\"Francois\", \"Briatte\", role = \"aut\", email = \"f.briatte@gmail.com\"),\n    person(\"Moritz\", \"Marbach\", role = \"aut\", email = \"mmarbach@mail.uni-mannheim.de\"),\n    person(\"Edwin\", \"Thoen\", role = \"aut\", email = \"edwinthoen@gmail.com\"),\n    person(\"Amos\", \"Elberg\", role = \"aut\", email = \"amos.elberg@gmail.com\"),\n    person(\"Ott\", \"Toomet\", role = \"ctb\", email = \"otoomet@gmail.com\"),\n    person(\"Jason\", \"Crowley\", role = \"aut\", email = \"crowley.jason.s@gmail.com\"),\n    person(\"Heike\", \"Hofmann\", role = \"ths\", email = \"hofmann@iastate.edu\"),\n    person(\"Hadley\", \"Wickham\", role = \"ths\", email = \"h.wickham@gmail.com\")\n    )",
-        "Description": "\n    The R package 'ggplot2' is a plotting system based on the grammar of graphics.\n    'GGally' extends 'ggplot2' by adding several functions\n    to reduce the complexity of combining geometric objects with transformed data.\n    Some of these functions include a pairwise plot matrix, a two group pairwise plot\n    matrix, a parallel coordinates plot, a survival plot, and several functions to\n    plot networks.",
-        "Depends": "R (>= 3.1), ggplot2 (>= 3.4.4)",
-        "Imports": "dplyr (>= 1.0.0), tidyr (>= 1.3.0), grDevices, grid, ggstats,\ngtable (>= 0.2.0), lifecycle, plyr (>= 1.8.3), progress,\nRColorBrewer, rlang, scales (>= 1.1.0), utils, magrittr",
-        "Suggests": "broom (>= 0.7.0), broom.helpers (>= 1.3.0), chemometrics,\ngeosphere (>= 1.5-1), ggforce, Hmisc, igraph (>= 1.0.1),\nintergraph (>= 2.0-2), labelled, maps (>= 3.1.0), mapproj,\nnnet, network (>= 1.17.1), scagnostics, sna (>= 2.3-2),\nsurvival, rmarkdown, roxygen2, testthat, crosstalk, knitr,\nspelling, emmeans, vdiffr",
-        "RoxygenNote": "7.3.1",
-        "SystemRequirements": "openssl",
+        "Depends": "ggplot2 (>= 3.5.2), R (>= 4.3)",
+        "Imports": "dplyr (>= 1.1.0), ggstats (>= 0.9.0), grDevices, grid, gtable\n(>= 0.2.0), lifecycle, magrittr, progress, RColorBrewer, rlang,\nS7 (>= 0.2.0), scales (>= 1.3.0), tidyr (>= 1.3.0), utils",
+        "Suggests": "broom (>= 0.7.0), broom.helpers (>= 1.3.0), chemometrics,\ncrosstalk, emmeans, geosphere (>= 1.5-1), ggforce, Hmisc,\nigraph (>= 1.0.1), intergraph (>= 2.0-2), knitr, labelled,\nmapproj, maps (>= 3.1.0), network (>= 1.17.1), nnet, rmarkdown,\nscagnostics, sna (>= 2.3-2), spelling, survival, testthat (>=\n3.0.0), vdiffr",
+        "RdMacros": "lifecycle",
+        "Config/Needs/website": "tidyverse/tidytemplate",
+        "Config/testthat/edition": "3",
+        "Config/usethis/last-upkeep": "2025-06-13",
         "Encoding": "UTF-8",
         "Language": "en-US",
-        "RdMacros": "lifecycle",
-        "Config/testthat/edition": "3",
+        "LazyData": "true",
+        "LazyLoad": "yes",
+        "RoxygenNote": "7.3.2",
+        "SystemRequirements": "openssl",
+        "Collate": "'GGally-package.R' 'data-australia-pisa-2012.R'\n'data-baseball.R' 'data-flea.R' 'data-happy.R' 'data-nasa.R'\n'data-pigs.R' 'data-psychademic.R' 'data-tips.R'\n'data-twitter_spambots.R' 'deprecated.R' 'find-combo.R'\n'gg-plots.R' 'ggally_colbar.R' 'ggally_cross.R'\n'ggaly_trends.R' 'ggbivariate.R' 'ggcoef.R' 'ggcorr.R'\n'ggfacet.R' 'gglyph.R' 'ggpairs_getput.R' 'ggmatrix.R'\n'ggmatrix_gtable.R' 'ggmatrix_gtable_helpers.R'\n'ggmatrix_legend.R' 'ggmatrix_make_plot.R' 'ggmatrix_print.R'\n'ggmatrix_progress.R' 'ggnet.R' 'ggnet2.R' 'ggnetworkmap.R'\n'ggnostic.R' 'ggpairs.R' 'ggpairs_add.R'\n'ggpairs_internal_plots.R' 'ggparcoord.R' 'ggsave.R'\n'ggscatmat.R' 'ggsurv.R' 'ggtable.R' 'reexports.R'\n'utils-pipe.R' 'utils.R' 'vig_ggally.R' 'zzz.R'",
         "NeedsCompilation": "no",
-        "Packaged": "2024-02-13 19:02:36 UTC; barret",
-        "Author": "Barret Schloerke [aut, cre],\n  Di Cook [aut, ths],\n  Joseph Larmarange [aut],\n  Francois Briatte [aut],\n  Moritz Marbach [aut],\n  Edwin Thoen [aut],\n  Amos Elberg [aut],\n  Ott Toomet [ctb],\n  Jason Crowley [aut],\n  Heike Hofmann [ths],\n  Hadley Wickham [ths]",
+        "Packaged": "2025-07-17 16:24:06 UTC; barret",
+        "Author": "Barret Schloerke [aut, cre] (ORCID:\n    <https://orcid.org/0000-0001-9986-114X>),\n  Di Cook [aut, ths] (ORCID: <https://orcid.org/0000-0002-3813-7155>),\n  Joseph Larmarange [aut] (ORCID:\n    <https://orcid.org/0000-0001-7097-700X>),\n  Francois Briatte [aut],\n  Moritz Marbach [aut],\n  Edwin Thoen [aut],\n  Amos Elberg [aut],\n  Ott Toomet [ctb],\n  Jason Crowley [aut],\n  Heike Hofmann [ths] (ORCID: <https://orcid.org/0000-0001-6216-5183>),\n  Hadley Wickham [ths] (ORCID: <https://orcid.org/0000-0003-4757-117X>)",
         "Maintainer": "Barret Schloerke <schloerke@gmail.com>",
         "Repository": "CRAN",
-        "Date/Publication": "2024-02-14 00:53:32 UTC",
-        "Built": "R 4.5.0; ; 2025-04-10 03:01:59 UTC; windows"
+        "Date/Publication": "2025-07-18 08:40:18 UTC",
+        "Built": "R 4.5.1; ; 2025-07-21 03:17:15 UTC; windows"
       }
     },
     "MASS": {
@@ -263,6 +266,39 @@
         "Repository": "CRAN",
         "Date/Publication": "2023-01-22 21:40:13 UTC",
         "Built": "R 4.5.0; x86_64-w64-mingw32; 2025-04-08 00:48:48 UTC; windows"
+      }
+    },
+    "S7": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "S7",
+        "Title": "An Object Oriented System Meant to Become a Successor to S3 and\nS4",
+        "Version": "0.2.0",
+        "Authors@R": "c(\n    person(\"Object-Oriented Programming Working Group\", role = \"cph\"),\n    person(\"Davis\", \"Vaughan\", role = \"aut\"),\n    person(\"Jim\", \"Hester\", role = \"aut\",\n           comment = c(ORCID = \"0000-0002-2739-7082\")),\n    person(\"Tomasz\", \"Kalinowski\", role = \"aut\"),\n    person(\"Will\", \"Landau\", role = \"aut\"),\n    person(\"Michael\", \"Lawrence\", role = \"aut\"),\n    person(\"Martin\", \"Maechler\", role = \"aut\",\n           comment = c(ORCID = \"0000-0002-8685-9910\")),\n    person(\"Luke\", \"Tierney\", role = \"aut\"),\n    person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\"),\n           comment = c(ORCID = \"0000-0003-4757-117X\"))\n  )",
+        "Description": "A new object oriented programming system designed to be a\n    successor to S3 and S4. It includes formal class, generic, and method\n    specification, and a limited form of multiple dispatch. It has been\n    designed and implemented collaboratively by the R Consortium\n    Object-Oriented Programming Working Group, which includes\n    representatives from R-Core, 'Bioconductor', 'Posit'/'tidyverse', and\n    the wider R community.",
+        "License": "MIT + file LICENSE",
+        "URL": "https://rconsortium.github.io/S7/,\nhttps://github.com/RConsortium/S7",
+        "BugReports": "https://github.com/RConsortium/S7/issues",
+        "Depends": "R (>= 3.5.0)",
+        "Imports": "utils",
+        "Suggests": "bench, callr, covr, knitr, methods, rmarkdown, testthat (>=\n3.2.0), tibble",
+        "VignetteBuilder": "knitr",
+        "Config/build/compilation-database": "true",
+        "Config/Needs/website": "sloop",
+        "Config/testthat/edition": "3",
+        "Config/testthat/parallel": "TRUE",
+        "Config/testthat/start-first": "external-generic",
+        "Encoding": "UTF-8",
+        "RoxygenNote": "7.3.2",
+        "NeedsCompilation": "yes",
+        "Packaged": "2024-11-06 17:18:31 UTC; hadleywickham",
+        "Author": "Object-Oriented Programming Working Group [cph],\n  Davis Vaughan [aut],\n  Jim Hester [aut] (<https://orcid.org/0000-0002-2739-7082>),\n  Tomasz Kalinowski [aut],\n  Will Landau [aut],\n  Michael Lawrence [aut],\n  Martin Maechler [aut] (<https://orcid.org/0000-0002-8685-9910>),\n  Luke Tierney [aut],\n  Hadley Wickham [aut, cre] (<https://orcid.org/0000-0003-4757-117X>)",
+        "Maintainer": "Hadley Wickham <hadley@posit.co>",
+        "Repository": "CRAN",
+        "Date/Publication": "2024-11-07 12:50:02 UTC",
+        "Built": "R 4.5.0; x86_64-w64-mingw32; 2025-05-28 00:40:14 UTC; windows",
+        "Archs": "x64"
       }
     },
     "V8": {
@@ -726,7 +762,7 @@
         "Package": "commonmark",
         "Type": "Package",
         "Title": "High Performance CommonMark and Github Markdown Rendering in R",
-        "Version": "1.9.5",
+        "Version": "2.0.0",
         "Authors@R": "c(\n    person(\"Jeroen\", \"Ooms\", ,\"jeroenooms@gmail.com\", role = c(\"aut\", \"cre\"),\n        comment = c(ORCID = \"0000-0002-4035-0289\")),\n    person(\"John MacFarlane\", role = \"cph\", comment = \"Author of cmark\"))",
         "Description": "The CommonMark specification <https://github.github.com/gfm/> defines\n    a rationalized version of markdown syntax. This package uses the 'cmark' \n    reference implementation for converting markdown text into various formats\n    including html, latex and groff man. In addition it exposes the markdown\n    parse tree in xml format. Also includes opt-in support for GFM extensions\n    including tables, autolinks, and strikethrough text.",
         "License": "BSD_2_clause + file LICENSE",
@@ -737,12 +773,12 @@
         "Language": "en-US",
         "Encoding": "UTF-8",
         "NeedsCompilation": "yes",
-        "Packaged": "2025-03-17 15:28:44 UTC; jeroen",
-        "Author": "Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>),\n  John MacFarlane [cph] (Author of cmark)",
+        "Packaged": "2025-07-07 13:20:39 UTC; jeroen",
+        "Author": "Jeroen Ooms [aut, cre] (ORCID: <https://orcid.org/0000-0002-4035-0289>),\n  John MacFarlane [cph] (Author of cmark)",
         "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
         "Repository": "CRAN",
-        "Date/Publication": "2025-03-17 16:30:02 UTC",
-        "Built": "R 4.5.0; x86_64-w64-mingw32; 2025-04-10 00:38:29 UTC; windows",
+        "Date/Publication": "2025-07-07 13:40:02 UTC",
+        "Built": "R 4.5.1; x86_64-w64-mingw32; 2025-07-21 00:27:09 UTC; windows",
         "Archs": "x64"
       }
     },
@@ -1558,7 +1594,7 @@
         "Package": "ggstats",
         "Type": "Package",
         "Title": "Extension to 'ggplot2' for Plotting Stats",
-        "Version": "0.9.0",
+        "Version": "0.10.0",
         "Authors@R": "c(\n    person(\n      \"Joseph\", \"Larmarange\", ,\n      \"joseph@larmarange.net\",\n      role = c(\"aut\", \"cre\"),\n      comment = c(ORCID = \"0000-0001-7097-700X\")\n    )\n  )",
         "Description": "Provides new statistics, new geometries and new positions for \n    'ggplot2' and a suite of functions to facilitate the creation of \n    statistical plots.",
         "License": "GPL (>= 3)",
@@ -1573,12 +1609,12 @@
         "Language": "en-US",
         "VignetteBuilder": "knitr",
         "NeedsCompilation": "no",
-        "Packaged": "2025-03-10 10:35:16 UTC; josep",
-        "Author": "Joseph Larmarange [aut, cre] (<https://orcid.org/0000-0001-7097-700X>)",
+        "Packaged": "2025-07-02 15:59:33 UTC; josep",
+        "Author": "Joseph Larmarange [aut, cre] (ORCID:\n    <https://orcid.org/0000-0001-7097-700X>)",
         "Maintainer": "Joseph Larmarange <joseph@larmarange.net>",
         "Repository": "CRAN",
-        "Date/Publication": "2025-03-10 11:20:02 UTC",
-        "Built": "R 4.5.0; ; 2025-04-10 02:47:15 UTC; windows"
+        "Date/Publication": "2025-07-02 22:40:05 UTC",
+        "Built": "R 4.5.1; ; 2025-07-21 02:59:53 UTC; windows"
       }
     },
     "glue": {
@@ -2548,7 +2584,7 @@
       "description": {
         "Package": "pillar",
         "Title": "Coloured Formatting for Columns",
-        "Version": "1.10.2",
+        "Version": "1.11.0",
         "Authors@R": "\n    c(person(given = \"Kirill\",\n             family = \"M\\u00fcller\",\n             role = c(\"aut\", \"cre\"),\n             email = \"kirill@cynkra.com\",\n             comment = c(ORCID = \"0000-0002-1416-3412\")),\n      person(given = \"Hadley\",\n             family = \"Wickham\",\n             role = \"aut\"),\n      person(given = \"RStudio\",\n             role = \"cph\"))",
         "Description": "Provides 'pillar' and 'colonnade' generics designed\n    for formatting columns of data using the full range of colours\n    provided by modern terminals.",
         "License": "MIT + file LICENSE",
@@ -2567,12 +2603,12 @@
         "Config/gha/extra-packages": "units=?ignore-before-r=4.3.0",
         "Config/Needs/website": "tidyverse/tidytemplate",
         "NeedsCompilation": "no",
-        "Packaged": "2025-04-05 12:40:18 UTC; kirill",
-        "Author": "Kirill Müller [aut, cre] (<https://orcid.org/0000-0002-1416-3412>),\n  Hadley Wickham [aut],\n  RStudio [cph]",
+        "Packaged": "2025-07-04 18:25:31 UTC; kirill",
+        "Author": "Kirill Müller [aut, cre] (ORCID:\n    <https://orcid.org/0000-0002-1416-3412>),\n  Hadley Wickham [aut],\n  RStudio [cph]",
         "Maintainer": "Kirill Müller <kirill@cynkra.com>",
         "Repository": "CRAN",
-        "Date/Publication": "2025-04-05 13:40:02 UTC",
-        "Built": "R 4.5.0; ; 2025-04-10 01:47:31 UTC; windows"
+        "Date/Publication": "2025-07-04 19:20:02 UTC",
+        "Built": "R 4.5.1; ; 2025-07-21 01:45:57 UTC; windows"
       }
     },
     "pkgconfig": {
@@ -4118,14 +4154,14 @@
     ".gitattributes": {
       "checksum": "05bdb783ee6514c8c072e47680af8ff7"
     },
+    "app.R": {
+      "checksum": "911e2d729a32f88b22e8cf2ec0f9cc42"
+    },
     "Pump_ROI_Seller/.RData": {
       "checksum": "67cf00a6cf162f2cb2f1de60cb9e0028"
     },
     "Pump_ROI_Seller/_brand.yml": {
       "checksum": "5663ee54e4500fca6562ec16752795e3"
-    },
-    "Pump_ROI_Seller/app.R": {
-      "checksum": "911e2d729a32f88b22e8cf2ec0f9cc42"
     },
     "Pump_ROI_Seller/assets/blog/annual_saving_bar.png": {
       "checksum": "330ef6507487c220093202316cee8a12"
