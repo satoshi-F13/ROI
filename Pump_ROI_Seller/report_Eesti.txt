@@ -1,5 +1,5 @@
 ---
-title: "Pump Unit ROI Report"
+title: "Pump Unit ROI aruanne"
 format: 
    typst:
      template-partials:
@@ -64,57 +64,46 @@ performance_data <- readRDS(file = params$performance_data)
 
 
 
-# Summary {.unnumbered}
+# Kokkuvõte {.unnumbered}
 
-The implementation of the new **`r params$product`** pump system for **`r params$project`** shows exceptional financial performance compared to the current pump infrastructure. **`r params$product`** offers convincing economic advantages. The total savings over **`r params$years`** years are **€`r params$total_savings`**. This means a strong **`r params$roi_percent`%** return on investment. The initial investment will be paid back in **`r params$payback_years`** years. The annual CO2 reduction will be **`r format(calc$annual_co2_savings, big.mark = ",")`** kg.
+Uue **`r params$product`** pumpade süsteemi rakendamine **`r params$project`** jaoks näitab erakordset finantstulemuslikkust võrreldes praeguse pumba infrastruktuuriga. **`r params$product`** pakub veenvaid majanduslikke eeliseid. Kogusääst **`r params$years`** aastate jooksul on **€`r params$total_savings`**. See tähendab tugevat **`r params$roi_percent`%** investeeringu tasuvust. Esialgne investeering tasutakse tagasi **`r params$payback_years`** aastaga. The annual CO2 reduction will be **`r format(calc$annual_co2_savings, big.mark = ",")`** kg.
 
 
 
-# Key Findings {.unnumbered}
-
+# Peamised järeldused{.unnumbered}
 ::: {.grid layout-ncol=3 layout-valign="center" layout-halign="center" layout-gap="10pt" style="text-align: center;"}
-
 ::: {.key-value-box style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;"}
 <div style="font-size: 2.5em; color: #3EB0E6; font-weight: bold;">`r params$efficiency_diff`</div>
-<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> for Pump Efficiency Differences.</span>
-
+<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> pumba tõhususe erinevused.</span>
 :::
-
 ::: {.key-value-box style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;"}
 <div style="font-size: 2.5em; color: #3EB0E6; font-weight: bold;">`r params$energy_savings`</div>
-<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;">for saving Annual Energy Cost.</span>
-
+<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> aastaste energiakulude säästmiseks.</span>
 :::
-
 ::: {.key-value-box style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;"}
 <div style="font-size: 2.5em; color: #3EB0E6; font-weight: bold;">`r params$mtbf_improvement`</div>
-<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> for differences of MTBF.</span>
-
+<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> erinevuste puhul MTBF.</span>
 :::
 
 ::: {.key-value-box style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;"}
 <div style="font-size: 2.5em; color: #3EB0E6; font-weight: bold;">`r params$downtime_savings`</div>
-<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> annual downtime differences.</span>
-
+<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> aastased seisakute erinevused.</span>
 :::
 
 ::: {.key-value-box style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;"}
 <div style="font-size: 2.5em; color: #3EB0E6; font-weight: bold;">`r params$maintenance_savings`</div>
-<span style="font-size: 1em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> for saving maintenance costs.</span>
-
+<span style="font-size: 1em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> hoolduskulude kokkuhoidmiseks.</span>
 :::
-
 ::: {.key-value-box style="background-color: #f9f9f9; padding: 15px; border-radius: 5px;"}
 <div style="font-size: 2.5em; color: #3EB0E6; font-weight: bold;">`r params$warranty`</div>
-<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> for Warranty period differences.</span>
-
+<span style="font-size: 1.2em; color: #B2B2B2; margin-top: 0.5em; display: block; font-weight: bold;"> Garantiiperioodi erinevuste puhul.</span>
 :::
 
 :::
 
 ::: {.grid layout-ncol=2 layout-valign="center" layout-halign="center" layout-gap="10pt" style="text-align: center;"}
 
-## Investment Recovery 
+## Investeeringute taastamine
 ```{r}
 library(ggplot2)
 library(tidyr)  # for pivot_longer
@@ -171,7 +160,7 @@ p
 
 
 
-## Metrics Comparisons
+## Mõõdikute võrdlused
 ```{r}
 set_flextable_defaults(
   font.family = "Noto Sans",
@@ -199,7 +188,7 @@ flextable::flextable(data = metrics) %>%
 ::: {.grid layout-ncol=2 layout-valign="center" layout-halign="center" layout-gap="10pt" style="text-align: center;"}
 
 
-## Savings Breakdown 
+## Säästude jaotus
 ```{r}
 
 p <- ggplot(breakdown, aes(x = Category, y = Annual_Savings)) +
@@ -217,7 +206,7 @@ p
 
 
 
-## Performance Comparison 
+## Tulemuslikkuse võrdlus
 ```{r}
 # Reshape data for grouped bar chart
 df_long <- data.frame(

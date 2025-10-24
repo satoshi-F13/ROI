@@ -68,7 +68,7 @@ performance_data <- readRDS(file = params$performance_data)
 
 # Summary {.unnumbered}
 
-The implementation of the new **`r params$product`** pump system for **`r params$project`** demonstrates exceptional financial performance compared to the current pump infrastructure. The **`r params$product`** delivers compelling economic advantages. Total Savings over **`r params$years`** years will be **€`r params$total_savings`**. This represents a robust **`r params$roi_percent`%** return on investment. The initial investment will be recovered in **`r params$payback_years`** year(s).  
+The implementation of the new **`r params$product`** pump system for **`r params$project`** shows exceptional financial performance compared to the current pump infrastructure. **`r params$product`** offers convincing economic advantages. The total savings over **`r params$years`** years are **€`r params$total_savings`**. This means a strong **`r params$roi_percent`%** return on investment. The initial investment will be paid back in **`r params$payback_years`** years. The annual CO2 reduction will be **`r format(calc$annual_co2_savings, big.mark = ",")`** kg.
 
 
 # Key Findings {.unnumbered}
@@ -106,29 +106,55 @@ The implementation of the new **`r params$product`** pump system for **`r params
 
 ## Investment Recovery 
 ```{r}
-    df <- data.frame(
-      Year = calc$years,
-      Investment = rep(calc$investment, length(calc$years)),
-      Cumulative_Savings = calc$cumulative_savings,
-      Net_Benefit = calc$net_benefit
-    )
-    
-    p <- plot_ly(df, x = ~Year) %>%
-      add_lines(y = ~Investment, name = "Initial Investment", line = list(color = "red", dash = "dash")) %>%
-      add_lines(y = ~Cumulative_Savings, name = "Cumulative Savings", line = list(color = "green")) %>%
-      add_lines(y = ~Net_Benefit, name = "Net Benefit", line = list(color = "blue", width = 3)) %>%
-      add_lines(x = range(df$Year), y = c(0, 0), name = "Break-even", 
-                line = list(color = "black", dash = "dot"), showlegend = FALSE) %>%
-      layout(
-        xaxis = list(title = "Year"),
-        yaxis = list(title = "Amount (€)"),
-        hovermode = "x unified",
-        legend = list(
-          x = 0.5, y = 1, xanchor = "center", yanchor = "bottom", orientation = "h"
-        )
-      )
-    
-    p
+library(ggplot2)
+library(tidyr)  # for pivot_longer
+
+df <- data.frame(
+  Year = calc$years,
+  Investment = rep(calc$investment, length(calc$years)),
+  Cumulative_Savings = calc$cumulative_savings,
+  Net_Benefit = calc$net_benefit
+)
+
+# Reshape for ggplot2
+df_long <- df %>%
+  pivot_longer(
+    cols = c(Investment, Cumulative_Savings, Net_Benefit),
+    names_to = "Metric",
+    values_to = "Amount"
+  )
+
+p <- ggplot(df_long, aes(x = Year, y = Amount, color = Metric, linetype = Metric, linewidth = Metric)) +
+  geom_line() +
+  geom_hline(yintercept = 0, linetype = "dotted", color = "black", linewidth = 0.5) +
+  scale_color_manual(
+    values = c("Investment" = "red", "Cumulative_Savings" = "green", "Net_Benefit" = "blue"),
+    labels = c("Cumulative_Savings" = "Cumulative Savings", 
+               "Investment" = "Initial Investment", 
+               "Net_Benefit" = "Net Benefit")
+  ) +
+  scale_linetype_manual(
+    values = c("Investment" = "dashed", "Cumulative_Savings" = "solid", "Net_Benefit" = "solid"),
+    labels = c("Cumulative_Savings" = "Cumulative Savings", 
+               "Investment" = "Initial Investment", 
+               "Net_Benefit" = "Net Benefit")
+  ) +
+  scale_linewidth_manual(
+    values = c("Investment" = 0.8, "Cumulative_Savings" = 0.8, "Net_Benefit" = 1.5),
+    labels = c("Cumulative_Savings" = "Cumulative Savings", 
+               "Investment" = "Initial Investment", 
+               "Net_Benefit" = "Net Benefit")
+  ) +
+  labs(x = "Year", y = "Amount (€)", color = "", linetype = "", linewidth = "") +
+  theme_minimal() +
+  theme(
+    legend.position = "top",
+    legend.justification = "center",
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 11, face = "bold")
+  )
+
+p
 ```
 
 
@@ -137,7 +163,6 @@ The implementation of the new **`r params$product`** pump system for **`r params
 
 ## Metrics Comparisons
 ```{r}
-    # DT::datatable(metrics, options = list(dom = 't', pageLength = 10), rownames = FALSE)
 set_flextable_defaults(
   font.family = "Noto Sans",
   font.size = 9,
@@ -166,15 +191,18 @@ flextable::flextable(data = metrics) %>%
 
 ## Savings Breakdown 
 ```{r}
-    p <- plot_ly(breakdown, x = ~Category, y = ~Annual_Savings, type = 'bar', 
-                 marker = list(color = c('#1f77b4', '#ff7f0e', '#2ca02c'), opacity = 0.8)) %>%
-                                layout(
-                                  xaxis = list(title = "Savings Category"),
-                                  yaxis = list(title = "Annual Savings (€)"),
-                                  showlegend = FALSE
-                                )
-                                
-      p
+
+p <- ggplot(breakdown, aes(x = Category, y = Annual_Savings)) +
+  geom_col(fill = c('#1f77b4', '#ff7f0e', '#2ca02c'), alpha = 0.8, width = 0.7) +
+  labs(x = "Savings Category", y = "Annual Savings (€)") +
+  theme_minimal() +
+  theme(
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 11, face = "bold"),
+    panel.grid.major.x = element_blank()
+  )
+
+p
 
 ```
 
@@ -182,23 +210,27 @@ flextable::flextable(data = metrics) %>%
 
 ## Performance Comparison 
 ```{r}
-          # Reshape data for grouped bar chart
-          df_long <- data.frame(
-            Metric = rep(performance_data$Metric, 2),
-            Value = c(performance_data$Current, performance_data$Proposed),
-            Type = rep(c("Current", "Proposed"), each = 3)
-          )
-          
-          p <- plot_ly(df_long, x = ~Metric, y = ~Value, color = ~Type, type = 'bar',
-                       colors = c("Current" = "#d62728", "Proposed" = "#2ca02c")) %>%
-            layout(
-              xaxis = list(title = "Performance Metrics"),
-              yaxis = list(title = "Value"),
-              barmode = 'group',
-              legend = list(x = 0.5, y = 1, xanchor = "center", yanchor = "bottom", orientation = "h")
-            )
-          
-          p
+# Reshape data for grouped bar chart
+df_long <- data.frame(
+  Metric = rep(performance_data$Metric, 2),
+  Value = c(performance_data$Current, performance_data$Proposed),
+  Type = rep(c("Current", "Proposed"), each = 3)
+)
+
+p <- ggplot(df_long, aes(x = Metric, y = Value, fill = Type)) +
+  geom_col(position = position_dodge(width = 0.8), width = 0.7, alpha = 0.9) +
+  scale_fill_manual(values = c("Current" = "#d62728", "Proposed" = "#2ca02c")) +
+  labs(x = "Performance Metrics", y = "Value", fill = "") +
+  theme_minimal() +
+  theme(
+    legend.position = "top",
+    legend.justification = "center",
+    axis.text = element_text(size = 10),
+    axis.title = element_text(size = 11, face = "bold"),
+    panel.grid.major.x = element_blank()
+  )
+
+p
 ```
 
 
